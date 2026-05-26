@@ -1,4 +1,4 @@
-import { Server } from './file-pokemon-showdown';
+import { Server } from './pokemon-showdown';
 
 const port = process.env.PORT || 3000;
 
