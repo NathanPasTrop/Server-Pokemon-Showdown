@@ -1,14 +1,11 @@
 {
   "name": "showdown-server",
   "version": "1.0.0",
-  "engines": {
-    "node": "20.x"
-  },
+  "engines": { "node": "20.x" },
   "scripts": {
-    "start": "concurrently \"node loginserver.js\" \"node pokemon-showdown start\""
+    "start": "node pokemon-showdown start"
   },
   "dependencies": {
-    "concurrently": "^8.2.0",
     "ts-chacha20": "^1.2.0",
     "preact": "^10.5.15",
     "preact-render-to-string": "^6.5.13",
