@@ -2,7 +2,7 @@
   "name": "showdown-server",
   "version": "1.0.0",
   "scripts": {
-    "start": "concurrently \"node loginserver.js\" \"node pokemon-showdown\""
+    "start": "concurrently \"node loginserver.js\" \"node pokemon-showdown start\""
   },
   "dependencies": {
     "concurrently": "^8.2.0"
