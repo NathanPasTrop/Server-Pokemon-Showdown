@@ -188,7 +188,7 @@ exports.crashguard = true;
  *   This is the URL of the user database and ladder mentioned earlier.
  *   Don't change this setting - there aren't any other login servers right now
  */
-exports.loginserver = 'http://play.pokemonshowdown.com/';
+// exports.loginserver = 'http://play.pokemonshowdown.com/';
 exports.loginserverkeyalgo = "RSA-SHA1";
 exports.loginserverpublickeyid = 4;
 exports.loginserverpublickey = `-----BEGIN PUBLIC KEY-----
@@ -777,8 +777,9 @@ exports.grouplist = [
 exports.client = {
 	default: "https://nodejs-production-99bab.up.railway.app",
 };
+exports.loginserver = 'http://localhost:8000/';
 exports.nouserauth = false;
 exports.noladder = false;
-exports.loginserver = 'http://localhost:8000/';
-exports.loglevel = 'debug';
 exports.guestsCanChangeName = true;
+exports.loglevel = 'debug';
+exports.logdestination = 'stdout';

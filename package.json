@@ -2,10 +2,11 @@
   "name": "showdown-server",
   "version": "1.0.0",
   "scripts": {
-    "start": "node server.js"
+    "start": "concurrently \"node loginserver.js\" \"node server.js\""
   },
   "dependencies": {
     "express": "^5.2.1",
-    "pokemon-showdown": "file:./pokemon-showdown"
+    "pokemon-showdown": "file:./pokemon-showdown",
+    "concurrently": "^8.2.0"
   }
 }
