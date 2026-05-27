@@ -1,52 +1,32 @@
-const path = require("path");
-const { fork } = require("child_process");
-const express = require("express");
+/**
+ * Pokémon Showdown Server - Railway compatible
+ */
 
-const api = require("./api");
+'use strict';
 
-// -----------------------------
-// 1) Lancer Showdown comme serveur principal
-// -----------------------------
-const showdownPort = process.env.PORT || 3000;
+const path = require('path');
 
-const serverPath = path.join(
-    __dirname,
-    "pokemon-showdown",
-    "dist",
-    "server",
-    "index.js"
-);
+// 1) Charger le moteur Showdown
+require('./pokemon-showdown/lib/fs').FS = require('./pokemon-showdown/lib/fs').FS;
+require('./pokemon-showdown/lib/process-manager');
+require('./pokemon-showdown/lib/repl');
 
-const child = fork(serverPath, [], {
-    env: { ...process.env, PORT: showdownPort }
+global.Config = require('./pokemon-showdown/config/config');
+global.Monitor = require('./pokemon-showdown/lib/monitor');
+global.Dex = require('./pokemon-showdown/sim/dex').Dex;
+global.LoginServer = require('./pokemon-showdown/lib/loginserver');
+global.Users = require('./pokemon-showdown/users');
+global.Rooms = require('./pokemon-showdown/rooms');
+global.Chat = require('./pokemon-showdown/chat');
+global.Ladders = require('./pokemon-showdown/ladders');
+global.Tournaments = require('./pokemon-showdown/tournaments');
+
+// 2) Démarrer le serveur HTTP + WebSocket Showdown
+const Server = require('./pokemon-showdown/server');
+
+const PORT = process.env.PORT || Config.port || 8001;
+const HOST = Config.bindaddress || '0.0.0.0';
+
+Server.listen(PORT, HOST, () => {
+    console.log(`🔥 Showdown server running on ${HOST}:${PORT}`);
 });
-
-child.on("message", msg => console.log("[Showdown]", msg));
-child.on("error", err => console.error("[Showdown ERROR]", err));
-child.on("exit", code => console.log("[Showdown EXIT]", code));
-
-console.log("Pokémon Showdown public server on port " + showdownPort);
-
-// -----------------------------
-// 2) Lancer Express sur un port interne
-// -----------------------------
-const apiPort = 4000;
-
-const app = express();
-
-// CORS pour ton API
-app.use((req, res, next) => {
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-    if (req.method === "OPTIONS") return res.sendStatus(200);
-    next();
-});
-
-app.use("/api", api);
-
-app.listen(apiPort, () => {
-    console.log("Internal API running on port " + apiPort);
-});
-
-app.use("/", express.static(path.join(__dirname, "pokemon-showdown", "client")));
