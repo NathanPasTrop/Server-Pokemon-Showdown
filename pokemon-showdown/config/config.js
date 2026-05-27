@@ -777,3 +777,4 @@ exports.grouplist = [
 exports.client = {
 	default: "https://nodejs-production-99bab.up.railway.app",
 };
+exports.loglevel = 'debug';
