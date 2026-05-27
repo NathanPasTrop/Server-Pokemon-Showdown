@@ -6,6 +6,7 @@
  * @type {number}
  */
 exports.port = process.env.PORT || 8001;
+console.log("SHOWDOWN PORT =", exports.port);
 
 /**
  * The server address - the address at which Pokemon Showdown should be hosting
