@@ -48,3 +48,5 @@ app.use("/api", api);
 app.listen(apiPort, () => {
     console.log("Internal API running on port " + apiPort);
 });
+
+app.use("/", express.static(path.join(__dirname, "pokemon-showdown", "client")));
