@@ -777,5 +777,8 @@ exports.grouplist = [
 exports.client = {
 	default: "https://nodejs-production-99bab.up.railway.app",
 };
+exports.nouserauth = false;
+exports.noladder = false;
+exports.loginserver = 'http://localhost:8000/';
 exports.loglevel = 'debug';
 exports.guestsCanChangeName = true;
