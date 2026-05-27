@@ -2,6 +2,7 @@
   "name": "showdown-server",
   "version": "1.0.0",
   "scripts": {
+    "postinstall": "cd pokemon-showdown && npm install",
     "start": "concurrently \"node loginserver.js\" \"node pokemon-showdown start\""
   },
   "dependencies": {
