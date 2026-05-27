@@ -1,1 +1,1 @@
-web: node server.js
+web: concurrently "node loginserver.js" "node pokemon-showdown"
