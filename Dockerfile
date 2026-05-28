@@ -7,7 +7,7 @@ RUN npm install
 
 COPY . .
 
-RUN ls -R /app
+RUN echo "=== CONTENU DE /app ===" && ls -R /app
 
 EXPOSE 8001
 
