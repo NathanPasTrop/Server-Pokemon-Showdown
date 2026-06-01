@@ -5,8 +5,6 @@ WORKDIR /pokemon-showdown
 COPY package*.json ./
 RUN npm install
 
-COPY . .
-
 EXPOSE 8001
 
 CMD ["node", "pokemon-showdown", "start"]
