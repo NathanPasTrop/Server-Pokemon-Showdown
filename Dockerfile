@@ -7,6 +7,6 @@ RUN npm install
 
 EXPOSE 8001
 
-RUN echo "=== CONTENU DE / ===" && ls -R /
+RUN echo "=== CONTENU DE / ===" && ls -R /pokemon-showdown
 
 CMD ["node", "pokemon-showdown", "start"]
