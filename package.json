@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "engines": { "node": "20.x" },
   "scripts": {
-    "postinstall": "cd pokemon-showdown && npm install && node pokemon-showdown start",
     "start": "node server.js"
   },
   "dependencies": {}
