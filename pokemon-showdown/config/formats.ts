@@ -29,7 +29,7 @@ export const Formats: import('../sim/dex-formats').FormatList = [
 		name: "regular-solo",
 		desc: `Des combat en 1 vs 1 avec les 6 pokémons de votre équipe sans aucune limite.`,
 		mod: 'gen9legends',
-		ruleset: [],
+		ruleset: ['Standard'],
 	},
 	{
 		name: "[Gen 9] Random Battle",
